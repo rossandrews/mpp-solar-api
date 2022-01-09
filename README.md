@@ -13,3 +13,7 @@ npm install
 #### Run service
 
 node ./index.js
+
+## Run Commands
+Now you can run queries against the webservice to run commands against your hardware. I've set this up as get query because it's simplier to try out
+* http://<ip_address>:3002/runCommand?command=QPIRI
