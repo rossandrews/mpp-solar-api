@@ -18,8 +18,8 @@ app.listen(port, function () {
   console.log("Example app listening at port " + port);
 });
 
-app.post("/sendCommand", (req, res, next) => {
-  var command = req.body.command;
+app.get("/runCommand", (req, res, next) => {
+  var command = req.query.command;
   console.log("Command received: " + command);
 
   var commandTopic = "mpp-solar/api-client";
