@@ -35,11 +35,15 @@ app.get("/runCommand", (req, res, next) => {
   clientCommand.on("connect", function () {
     clientCommand.subscribe([responseTopic], { qos: 0 });
   });
-  
+
+  var messageSent = false;  
+
   clientCommand.on("message", function (topic, message, packet) {
     console.log(message.toString())
     if (topic == responseTopic) {
-      res.json(message.toString());
+      messageSent = true;
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).send(message.toString());
     }
 
     clientCommand.end();
